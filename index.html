@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Jost', sans-serif;
+            transition-duration: 300ms;
+            scroll-behavior: smooth;
+
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: #0f172a;
+            color: white;
+
+        }
+
+        header {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4.6rem;
+            user-select: none;
+        }
+
+        header div {
+            display: flex;
+            gap: 20px;
+        }
+
+        header div h1:first-child {
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 1.5px white;
+        }
+
+        header ul {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        header ul li {
+            list-style-type: none;
+            font-size: 0.9em;
+            user-select: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header ul li:after {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 1px;
+            background: white;
+            right: 100%;
+            bottom: 0;
+            transition-duration: 300ms;
+
+
+        }
+
+        header ul li:hover::after {
+            transform: translateX(100%);
+        }
+
+        header a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        section{
+            min-height: 100vh;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        section:nth-child(2n) {
+            background: white;
+            color: #0f172a;
+        }
+
+        .section-header {
+            width: fit-content;
+            margin: 0 auto;
+            text-transform: uppercase;
+            font-family: 'Oswald', sans-serif;
+            position: relative;
+            padding: 4px 10px;
+            max-width: 85ch;
+
+        }
+
+        .section-header::before,
+        .section-header::after {
+            position: absolute;
+            content: '';
+            width: 100vw;
+            height: 1px;
+            background: #0f172a;
+        }
+
+        .section-header::before {
+            right: 0;
+            top: 0;
+        }
+
+        .section-header::after {
+            left: 0;
+            bottom: 0;
+        }
+
+        section:nth-child(2n + 1) .section-heade::before,
+        section:nth-child(2n + 1) .section-heade::after {
+            background: white;
+        }
+
+        .section-wrapper {
+            width: 100%;
+            max-width: 75ch;
+            margin: 0 auto;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .section-content {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            /* gap: 20px; */
+            font-size: 1.2em;
+            text-align: left;
+
+        }
+
+        .experience-header h2 {
+            font-weight: 500;
+        }
+
+        .experience-header {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+
+        }
+
+        .experience-subheader {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #cbd5e1;
+        }
+        
+        .resume-item > p {
+            padding: 2px 0;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            width: 100%;
+
+        }
+
+        .project-grid img {
+            width: 100%;
+        }
+
+        .project-item img {
+            box-shadow: 0 0 4px 2px lightgray;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .project-item:hover {
+            box-shadow: 0 0 4px 2px darkgray;
+        }
+
+        .img-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to bottom, transparent, #0f172a);
+            padding: 12px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9em;
+
+        }
+
+        .img-text h3 {
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            gap: 20px;
+            font-size: 1.2em;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            transform: rotate(45deg);
+            opacity: 0.5;
+        }
+</style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>HARRY</h1>
+            <h1>SISLEY</h1>
+
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <a href="#about-me">About Me</a>
+                </li>
+                <li>
+                    <a href="#experience">Experience</a>
+                </li>
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main>
+
+    </main>
+    <nav></nav>
+    <section id="about-me">
+        <h2 class="section-header">About Me</h2>
+        <div class="section-wrapper">
+            <div class="section-content">
+                <p>Hi! My name is Harry Sisley, I am a Junior Software Engineer from Essex in the UK.
+                    Although my professional background is not directly software development, I beleive that my unique blend of skills, passion for the tech industry and my eagerness to learn makes me a unique developer.
+                    In addition to my professional experience, I have pursued a self-directed study of programming languages via Udemy, FreeCodeCamp and Youtube. Mastering programming lanuages such as JavaScript, Python, HTML and CSS.
+                    I can confidently say that I am a fast leaner when it comes to code, knowing that there is so much more to learn about this industry, I am studying 5-6 hours everyday.
+                    
+                </p>
+
+                <p>
+                    Thank you for taking the time to check out my website!
+                </p>
+            </div>
+        </div>
+    </section>
+    <section id="experience">
+        <h2 class="section-header">Experience</h2>
+        <div class="section-wrapper">
+            <div class="section-content">
+                <div class-"resume-item">
+                <div class="experience-header">
+                    <h2>Parts Advisor & Tech support</h2>
+                    <div class="experience-subheader">
+                        <p>DLG Auto Services</p>
+                        <p>November 2022 - September 2023</p>
+                    </div>
+                </div>
+                <p>Whilst I worked at DLG, I worked within the parts department. This job role included taking calls from customers; dealing with and handling insurance claims, ensuring that the ordering and collection of parts is correct and is running smoothly and handling any other enquires customers may have. I also worked closely with other deopartments within my workplace to ensure the smooth running of business and making the customer experience better. I also helped with any technology queries that may occur on a daily basis around the building.</p>
+                <div class="experience-header">
+                    <h2>Business Admin & IT</h2>
+                    <div class="experience-subheader">
+                        <p>Garretts Bodyworks</p>
+                        <p>March 2017 - November 2022</p>
+                    </div>
+                </div>
+                <p>Managing the social media platforms in order to gain a larger target audience for the business, discussing with customers and insurance companies about their needs whilst providing all whilst providing a happy and enjoyable service. By working in the office, I was customer facing. This meant I took calls, handled customers that came into our workplace and dealt with their needs ensuring that service was high quality. I also worked with problem solving any issues that may happen on a daily basis efficiently and calmly. I also worked in the parts department on some occassions in order to learn new skills.</p>
+                <div class="experience-header">
+                    <h2>Junior Graphic Designer</h2>
+                    <div class="experience-subheader">
+                        <p>Reflect Design for Print</p>
+                        <p>January 2017 - March 2017</p>
+                    </div>
+                </div>
+                <p>My role was to create customers marketing projects from business cards to banners. I would respond and to customer emails and give quotes on the projects they desire.</p>
+                <div class="experience-header">
+                    <h2>Junior Graphic Designer</h2>
+                    <div class="experience-subheader">
+                        <p>Flash Design for Print</p>
+                        <p>July 2016 - December 2016</p>
+                    </div>
+                </div>
+                <p>I would create and design business logos whilst responding to customers queries. I would also use the print machine to create things such as t-shirts and posters.</p>
+            </div>
+            </div>
+        </div>
+    </section>
+    <section id="projects">
+        <h2 class="section-header">Projects</h2>
+        <div class="section-wrapper">
+            <div class="project-grid">
+                <div class="project-item">
+                    <img src="/public//image 1.jpg" 
+                    alt="todo-list"/>
+                    <div class="img-text"></div>
+                    <h3>To-do List</h3>
+                </div>
+                <div class="project-item">
+                    <img src="/public//image 2.jpg"
+                    alt="calculator"
+                    <div class="img-text"></div>
+                    <h3>Calculator</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <a href="#">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="#">
+            <i class="fa-brands fa-github"></i>
+        </a>
+
+    </footer>
+</body>
+
+</html> 
